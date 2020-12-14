@@ -9,6 +9,9 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
+mongoose.connection.on("connected", ()=>{
+    console.log("Mongoose is connected!");
+});
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
